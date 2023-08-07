@@ -1,0 +1,32 @@
+﻿@model EmploymentManagement.Models.Employee
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Employee Details";
+    var photoPath = "~/images/" + (Model.PhotoName ?? "noimage.png");
+}
+
+<div class="row justify-content-center details">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>Name: @Model.Name</h1>
+            </div>
+        </div>
+
+        <div class="card-body text-center">
+            <img class="card-img-top mb-4" src="@photoPath" alt="employee-image" asp-append-version="true"/>
+
+            <h4>Employee ID: @Model.Id</h4>
+            <h4>Email: @Model.Email</h4>
+            <h4>Department: @Model.Department</h4>
+        </div>
+
+        <div class="card-footer text-center mt-3">
+            <a asp-controller="home" asp-action="index" class="btn btn-primary m-1">Back</a>
+            <a asp-controller="home" asp-action="edit" asp-route-id="@Model.Id" class="btn btn-primary m-1">Edit</a>
+            <a href="#" class="btn btn-danger m-1">Delete</a>
+        </div>
+    </div>
+</div>
